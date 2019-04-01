@@ -83,4 +83,4 @@ print(f'Winner: {winner}')
 print("----------------------------")
 sys.stdout.close()
 sys.stdout=sys.__stdout__
-#IDE needs to be restarted
+#kernel needs to be restarted
