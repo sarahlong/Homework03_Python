@@ -1,15 +1,9 @@
 #create files across operating systems, module for reading CSVs
 import os
 import sys
-# cwd=os.getcwd()
-# print cwd
-
 import csv
-from statistics import mean
 
 # Store the file path associated with the file
-#csvfile = 'Resources/budget_data.csv'
-#csvpath = os.path.join('PyBank','Resources', 'budget_data.csv')
 csvpath = os.path.join('Resources/budget_data.csv')
 
 # Define variables
@@ -87,7 +81,4 @@ print(f'Greatest Increase in Profits: {max_increase_month} {max_increase}\n')
 print(f'Greatest Decrease in Profits: {max_decrease_month} {max_decrease}\n')
 sys.stdout.close()
 sys.stdout=sys.__stdout__
-#IDE needs to be restarted
- 
-
-  
+#kernel needs to be restarted
