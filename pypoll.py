@@ -1,5 +1,6 @@
 #create files across operating systems, module for reading CSVs
 import os
+import sys
 import csv
 
 # Store the file path associated with the file
@@ -27,22 +28,24 @@ with open(csvpath, 'r') as csvfile:
     for row in csvreader:
         #count total votes and sum total
         vote_count += 1
-        
+
         #add votes to respective candidate vote counters
         if row[2] == "Khan":
             Khan_votes = Khan_votes + 1
         elif row[2] =="Correy":
-            Correy_votes = Correy_votes + 1    
+            Correy_votes = Correy_votes + 1
         elif row[2] =="Li":
             Li_votes = Li_votes + 1
         else:
             OTooley_votes = OTooley_votes + 1
 
 #compute percentages
-Khan_percent = Khan_votes / vote_count
-Correy_percent = Correy_votes / vote_count
-Li_percent = Li_votes / vote_count
-OTooley_percent = OTooley_votes / vote_count
+Khan_percent = round(Khan_votes / vote_count, 2) 
+Correy_percent = round(Correy_votes / vote_count, 2)
+Li_percent = round(Li_votes / vote_count, 2)
+OTooley_percent = round(OTooley_votes / vote_count, 2)
+
+Khan_percent_print = Khan_percent
 
 #find winning candidate
 candidate_list = ["Khan","Correy","Li","OTooley"]
@@ -65,3 +68,19 @@ print("----------------------------")
 print(f'Winner: {winner}')
 print("----------------------------")
 
+#write results to text file
+sys.stdout = open('pypoll_outputs.txt', 'w+')
+print("Election Results")
+print("----------------------------")
+print(f'Total Votes: {vote_count}')
+print("----------------------------")
+print(f'Khan Votes: {Khan_percent}, {Khan_votes}')
+print(f'Correy Votes: {Correy_percent}, {Correy_votes}')
+print(f'Li Votes: {Li_percent}, {Li_votes}')
+print(f'OTooley Votes: {OTooley_percent}, {OTooley_votes}')
+print("----------------------------")
+print(f'Winner: {winner}')
+print("----------------------------")
+sys.stdout.close()
+sys.stdout=sys.__stdout__
+#IDE needs to be restarted
